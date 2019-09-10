@@ -12,12 +12,7 @@ class TicTacToe
       %i[_ _ _],
       %i[_ _ _]
     ]
-
-    @placed_xs.zip([:x]*@placed_xs.length).each do |position, piece|
-      board[(position-1) / 3][(position-1) % 3] = piece
-    end
-
-    @placed_os.zip([:o]*@placed_os.length).each do |position, piece|
+    (@placed_os.zip([:o]*@placed_os.length) + @placed_xs.zip([:x]*@placed_xs.length)).each do |position, piece|
       board[(position-1) / 3][(position-1) % 3] = piece
     end
 

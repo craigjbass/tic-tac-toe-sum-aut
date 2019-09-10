@@ -6,8 +6,8 @@ require 'place_piece'
 
 class TicTacToe
   def initialize(display_board, place_piece)
-    @display_board = display_board 
-    @place_piece = place_piece 
+    @display_board = display_board
+    @place_piece = place_piece
   end
 
   def display_board

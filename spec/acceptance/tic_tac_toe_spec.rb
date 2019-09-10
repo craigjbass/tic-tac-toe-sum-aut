@@ -18,10 +18,10 @@ describe 'tic tac toe' do
   end
 
   let(:piece_gateway) { InMemoryPieceGateway.new }
-  
+
   def new_tic_tac_toe
     tic_tac_toe = TicTacToe.new(
-      DisplayBoard.new(piece_gateway), 
+      DisplayBoard.new(piece_gateway),
       PlacePiece.new(piece_gateway)
     )
   end

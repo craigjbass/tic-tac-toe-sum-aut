@@ -15,7 +15,7 @@ class GameState
 end
 
 class TicTacToe
-  def initialize(game_state = GameState.new)
+  def initialize(game_state)
     @game_state = game_state
   end
 

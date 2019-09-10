@@ -4,7 +4,7 @@ require 'tic_tac_toe'
 
 describe 'tic tac toe' do
   it 'can display an empty board' do
-    tic_tac_toe = TicTacToe.new
+    tic_tac_toe = TicTacToe.new(GameState.new)
 
     response = tic_tac_toe.display_board
 
@@ -20,7 +20,7 @@ describe 'tic tac toe' do
   end
 
   it 'can place a piece' do
-    tic_tac_toe = TicTacToe.new
+    tic_tac_toe = TicTacToe.new(GameState.new)
 
     tic_tac_toe.place_piece(:x, 1)
 
@@ -36,7 +36,7 @@ describe 'tic tac toe' do
   end
 
   it 'can place two pieces' do
-    tic_tac_toe = TicTacToe.new
+    tic_tac_toe = TicTacToe.new(GameState.new)
 
     tic_tac_toe.place_piece(:x, 1)
     tic_tac_toe.place_piece(:o, 2)
@@ -53,7 +53,7 @@ describe 'tic tac toe' do
   end
 
   it 'can place three pieces' do
-    tic_tac_toe = TicTacToe.new
+    tic_tac_toe = TicTacToe.new(GameState.new)
 
     tic_tac_toe.place_piece(:x, 1)
     tic_tac_toe.place_piece(:o, 2)
@@ -71,7 +71,7 @@ describe 'tic tac toe' do
   end
 
   it 'can place four pieces' do
-    tic_tac_toe = TicTacToe.new
+    tic_tac_toe = TicTacToe.new(GameState.new)
 
     tic_tac_toe.place_piece(:x, 1)
     tic_tac_toe.place_piece(:o, 2)
@@ -90,7 +90,7 @@ describe 'tic tac toe' do
   end
 
   it 'can place five pieces' do
-    tic_tac_toe = TicTacToe.new
+    tic_tac_toe = TicTacToe.new(GameState.new)
 
     tic_tac_toe.place_piece(:x, 1)
     tic_tac_toe.place_piece(:o, 2)

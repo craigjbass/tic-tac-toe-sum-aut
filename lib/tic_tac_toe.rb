@@ -12,7 +12,7 @@ class TicTacToe
       %i[_ _ _]
     ]
 
-    @placed_pieces.each do |position, piece|
+    pieces.each do |position, piece|
       board[(position-1) / 3][(position-1) % 3] = piece
     end
 
@@ -20,6 +20,16 @@ class TicTacToe
   end
 
   def place_piece(piece, position)
-    @placed_pieces << [position, piece]
+    save_piece([position, piece])
+  end
+
+  private
+
+  def pieces
+    @placed_pieces
+  end
+
+  def save_piece(piece)
+    @placed_pieces << piece
   end
 end

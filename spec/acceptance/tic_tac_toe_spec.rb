@@ -22,10 +22,6 @@ describe 'tic tac toe' do
   def new_tic_tac_toe
     @display_board = DisplayBoard.new(piece_gateway)
     @place_piece = PlacePiece.new(piece_gateway)
-    tic_tac_toe = TicTacToe.new(
-      @display_board,
-      @place_piece
-    )
   end
 
   def display_board

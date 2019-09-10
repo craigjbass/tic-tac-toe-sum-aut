@@ -6,7 +6,12 @@ class GameState
   end
 
   def pieces
-    @placed_pieces
+    @placed_pieces.map do |p|
+      Piece.new.tap do |piece|
+        piece.position = p[0]
+        piece.type = p[1]
+      end
+    end
   end
 
   def save_piece(piece)
@@ -30,8 +35,8 @@ class TicTacToe
       %i[_ _ _]
     ]
 
-    @game_state.pieces.each do |position, piece|
-      board[(position-1) / 3][(position-1) % 3] = piece
+    @game_state.pieces.each do |piece|
+      board[(piece.position-1) / 3][(piece.position-1) % 3] = piece.type
     end
 
     { board: board }

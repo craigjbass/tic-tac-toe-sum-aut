@@ -2,8 +2,6 @@
 
 class TicTacToe
   class GameState
-    attr_accessor :placed_pieces
-
     def initialize
       @placed_pieces = []
     end

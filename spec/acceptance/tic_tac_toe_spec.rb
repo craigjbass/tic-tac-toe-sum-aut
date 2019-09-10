@@ -26,10 +26,18 @@ describe 'tic tac toe' do
     )
   end
 
-  it 'can display an empty board' do
-    tic_tac_toe = new_tic_tac_toe
+  def display_board
+    @tic_tac_toe.display_board
+  end
 
-    response = tic_tac_toe.display_board
+  def place_piece(type, position)
+    @tic_tac_toe.place_piece(type, position)
+    end
+
+  it 'can display an empty board' do
+    @tic_tac_toe = new_tic_tac_toe
+
+    response = display_board
 
     expect(response[:board]).to(
       eq(
@@ -43,11 +51,11 @@ describe 'tic tac toe' do
   end
 
   it 'can place a piece' do
-    tic_tac_toe = new_tic_tac_toe
+    @tic_tac_toe = new_tic_tac_toe
 
-    tic_tac_toe.place_piece(:x, 1)
+    place_piece(:x, 1)
 
-    expect(tic_tac_toe.display_board[:board]).to(
+    expect(display_board[:board]).to(
       eq(
         [
           %i[x _ _],
@@ -59,12 +67,12 @@ describe 'tic tac toe' do
   end
 
   it 'can place two pieces' do
-    tic_tac_toe = new_tic_tac_toe
+    @tic_tac_toe = new_tic_tac_toe
 
-    tic_tac_toe.place_piece(:x, 1)
-    tic_tac_toe.place_piece(:o, 2)
+    place_piece(:x, 1)
+    place_piece(:o, 2)
 
-    expect(tic_tac_toe.display_board[:board]).to(
+    expect(display_board[:board]).to(
       eq(
         [
           %i[x o _],
@@ -76,13 +84,13 @@ describe 'tic tac toe' do
   end
 
   it 'can place three pieces' do
-    tic_tac_toe = new_tic_tac_toe
+    @tic_tac_toe = new_tic_tac_toe
 
-    tic_tac_toe.place_piece(:x, 1)
-    tic_tac_toe.place_piece(:o, 2)
-    tic_tac_toe.place_piece(:x, 3)
+    place_piece(:x, 1)
+    place_piece(:o, 2)
+    place_piece(:x, 3)
 
-    expect(tic_tac_toe.display_board[:board]).to(
+    expect(display_board[:board]).to(
       eq(
         [
           %i[x o x],
@@ -94,14 +102,14 @@ describe 'tic tac toe' do
   end
 
   it 'can place four pieces' do
-    tic_tac_toe = new_tic_tac_toe
+    @tic_tac_toe = new_tic_tac_toe
 
-    tic_tac_toe.place_piece(:x, 1)
-    tic_tac_toe.place_piece(:o, 2)
-    tic_tac_toe.place_piece(:x, 3)
-    tic_tac_toe.place_piece(:o, 6)
+    place_piece(:x, 1)
+    place_piece(:o, 2)
+    place_piece(:x, 3)
+    place_piece(:o, 6)
 
-    expect(tic_tac_toe.display_board[:board]).to(
+    expect(display_board[:board]).to(
       eq(
         [
           %i[x o x],
@@ -113,15 +121,15 @@ describe 'tic tac toe' do
   end
 
   it 'can place five pieces' do
-    tic_tac_toe = new_tic_tac_toe
+    @tic_tac_toe = new_tic_tac_toe
 
-    tic_tac_toe.place_piece(:x, 1)
-    tic_tac_toe.place_piece(:o, 2)
-    tic_tac_toe.place_piece(:x, 3)
-    tic_tac_toe.place_piece(:o, 6)
-    tic_tac_toe.place_piece(:x, 7)
+    place_piece(:x, 1)
+    place_piece(:o, 2)
+    place_piece(:x, 3)
+    place_piece(:o, 6)
+    place_piece(:x, 7)
 
-    expect(tic_tac_toe.display_board[:board]).to(
+    expect(display_board[:board]).to(
       eq(
         [
           %i[x o x],
@@ -133,24 +141,22 @@ describe 'tic tac toe' do
   end
 
   it 'can persist moves' do
-    new_tic_tac_toe.tap do |tic_tac_toe|
-      tic_tac_toe.place_piece(:x, 1)
-      tic_tac_toe.place_piece(:o, 2)
-      tic_tac_toe.place_piece(:x, 3)
-      tic_tac_toe.place_piece(:o, 6)
-      tic_tac_toe.place_piece(:x, 7)
-    end
+    @tic_tac_toe = new_tic_tac_toe
+    place_piece(:x, 1)
+    place_piece(:o, 2)
+    place_piece(:x, 3)
+    place_piece(:o, 6)
+    place_piece(:x, 7)
 
-    new_tic_tac_toe.tap do |tic_tac_toe|
-      expect(tic_tac_toe.display_board[:board]).to(
-        eq(
-          [
-            %i[x o x],
-            %i[_ _ o],
-            %i[x _ _]
-          ]
-        )
+    @tic_tac_toe = new_tic_tac_toe
+    expect(display_board[:board]).to(
+      eq(
+        [
+          %i[x o x],
+          %i[_ _ o],
+          %i[x _ _]
+        ]
       )
-    end
+    )
   end
 end

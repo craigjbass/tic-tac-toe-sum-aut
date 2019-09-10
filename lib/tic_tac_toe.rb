@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class TicTacToe
+  def initialize
+    @placed_os = []
+    @placed_xs = []
+  end
+
   def display_board
     board = [
       %i[_ _ _],
@@ -8,11 +13,11 @@ class TicTacToe
       %i[_ _ _]
     ]
 
-    if @placed
+    if @placed_xs.include?(1)
       board[0][0] = :x
     end
 
-    if @placed_x_3
+    if @placed_xs.include?(3)
       board[0][2] = :x
     end
 
@@ -29,6 +34,7 @@ class TicTacToe
 
   def place_piece(piece, position)
     if piece == :o
+      @placed_os << position
       if position == 2
         @placed_o = true
       end
@@ -38,6 +44,7 @@ class TicTacToe
       end
     end
     if piece == :x
+      @placed_xs << position
       if position == 1
         @placed = true
       end

@@ -12,7 +12,7 @@ class TicTacToe
       %i[_ _ _],
       %i[_ _ _]
     ]
-    (@placed_os + @placed_xs.zip([:x]*@placed_xs.length)).each do |position, piece|
+    (@placed_os + @placed_xs).each do |position, piece|
       board[(position-1) / 3][(position-1) % 3] = piece
     end
 
@@ -21,6 +21,6 @@ class TicTacToe
 
   def place_piece(piece, position)
     @placed_os << [position, piece] if piece == :o
-    @placed_xs << position if piece == :x
+    @placed_xs << [position, piece] if piece == :x
   end
 end

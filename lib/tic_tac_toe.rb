@@ -3,4 +3,3 @@
 require 'piece'
 require 'display_board'
 require 'place_piece'
-

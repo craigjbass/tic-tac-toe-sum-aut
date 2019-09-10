@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
 class TicTacToe
+  class GameState
+    attr_accessor :placed_pieces
+  end
+
   def initialize
-    @placed_pieces = []
+    @game_state = GameState.new
+    @game_state.placed_pieces = []
   end
 
   def display_board
@@ -26,10 +31,10 @@ class TicTacToe
   private
 
   def pieces
-    @placed_pieces
+    @game_state.placed_pieces
   end
 
   def save_piece(piece)
-    @placed_pieces << piece
+    @game_state.placed_pieces << piece
   end
 end

@@ -10,7 +10,4 @@ class TicTacToe
     @place_piece = place_piece
   end
 
-  def place_piece(type, position)
-    @place_piece.execute(position: position, type: type)
-  end
 end

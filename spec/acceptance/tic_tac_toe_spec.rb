@@ -33,8 +33,8 @@ describe 'tic tac toe' do
   end
 
   def place_piece(type, position)
-    @tic_tac_toe.place_piece(type, position)
-    end
+    @place_piece.execute(position: position, type: type)
+  end
 
   it 'can display an empty board' do
     @tic_tac_toe = new_tic_tac_toe

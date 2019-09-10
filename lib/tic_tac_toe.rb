@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
-class TicTacToe
-  class GameState
-    def initialize
-      @placed_pieces = []
-    end
-
-    def pieces
-      @placed_pieces
-    end
-
-    def save_piece(piece)
-      @placed_pieces << piece
-    end
+class GameState
+  def initialize
+    @placed_pieces = []
   end
 
+  def pieces
+    @placed_pieces
+  end
+
+  def save_piece(piece)
+    @placed_pieces << piece
+  end
+end
+
+class TicTacToe
   def initialize
     @game_state = GameState.new
   end

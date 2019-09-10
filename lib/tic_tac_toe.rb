@@ -7,10 +7,11 @@ require 'place_piece'
 class TicTacToe
   def initialize(piece_gateway)
     @piece_gateway = piece_gateway
+    @display_board = DisplayBoard.new(piece_gateway)
   end
 
   def display_board
-    DisplayBoard.new(@piece_gateway).execute({})
+    @display_board.execute({})
   end
 
   def place_piece(type, position)

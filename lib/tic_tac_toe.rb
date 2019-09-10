@@ -37,11 +37,11 @@ class TicTacToe
     { board: board }
   end
 
-  def place_piece(piece, position)
+  def place_piece(type, position)
     @game_state.save_piece(
       Piece.new.tap do |p|
         p.position = position
-        p.type = piece
+        p.type = type
       end
     )
   end

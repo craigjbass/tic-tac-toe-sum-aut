@@ -6,11 +6,9 @@ class PlacePiece
   end
 
   def execute(request)
-    @piece_gateway.save_piece(
-      Piece.new.tap do |p|
-        p.position = request[:position]
-        p.type = request[:type]
-      end
-    )
+    piece = Piece.new
+    piece.position = request[:position]
+    piece.type = request[:type]
+    @piece_gateway.save_piece(piece)
   end
 end

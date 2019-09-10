@@ -27,8 +27,8 @@ class Piece
 end
 
 class TicTacToe
-  def initialize(game_state)
-    @game_state = game_state
+  def initialize(piece_gateway)
+    @piece_gateway = piece_gateway
   end
 
   def display_board
@@ -38,7 +38,7 @@ class TicTacToe
       %i[_ _ _]
     ]
 
-    @game_state.pieces.each do |piece|
+    @piece_gateway.pieces.each do |piece|
       board[piece.row][piece.column] = piece.type
     end
 
@@ -46,7 +46,7 @@ class TicTacToe
   end
 
   def place_piece(type, position)
-    @game_state.save_piece(
+    @piece_gateway.save_piece(
       Piece.new.tap do |p|
         p.position = position
         p.type = type

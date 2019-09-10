@@ -8,6 +8,7 @@ class TicTacToe
   def initialize(piece_gateway)
     @piece_gateway = piece_gateway
     @display_board = DisplayBoard.new(piece_gateway)
+    @place_piece = PlacePiece.new(@piece_gateway)
   end
 
   def display_board
@@ -15,6 +16,6 @@ class TicTacToe
   end
 
   def place_piece(type, position)
-    PlacePiece.new(@piece_gateway).execute(position: position, type: type)
+    @place_piece.execute(position: position, type: type)
   end
 end

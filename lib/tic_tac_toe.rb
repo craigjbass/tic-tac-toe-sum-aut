@@ -2,8 +2,7 @@
 
 class TicTacToe
   def initialize
-    @placed_os = []
-    @placed_xs = []
+    @placed_pieces = []
   end
 
   def display_board
@@ -12,7 +11,8 @@ class TicTacToe
       %i[_ _ _],
       %i[_ _ _]
     ]
-    (@placed_os + @placed_xs).each do |position, piece|
+
+    @placed_pieces.each do |position, piece|
       board[(position-1) / 3][(position-1) % 3] = piece
     end
 
@@ -20,7 +20,6 @@ class TicTacToe
   end
 
   def place_piece(piece, position)
-    @placed_os << [position, piece] if piece == :o
-    @placed_xs << [position, piece] if piece == :x
+    @placed_pieces << [position, piece]
   end
 end

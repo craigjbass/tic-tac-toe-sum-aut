@@ -3,6 +3,14 @@
 class TicTacToe
   class GameState
     attr_accessor :placed_pieces
+
+    def pieces
+      @placed_pieces
+    end
+
+    def save_piece(piece)
+      @placed_pieces << piece
+    end
   end
 
   def initialize
@@ -17,7 +25,7 @@ class TicTacToe
       %i[_ _ _]
     ]
 
-    pieces.each do |position, piece|
+    @game_state.pieces.each do |position, piece|
       board[(position-1) / 3][(position-1) % 3] = piece
     end
 
@@ -25,16 +33,6 @@ class TicTacToe
   end
 
   def place_piece(piece, position)
-    save_piece([position, piece])
-  end
-
-  private
-
-  def pieces
-    @game_state.placed_pieces
-  end
-
-  def save_piece(piece)
-    @game_state.placed_pieces << piece
+    @game_state.save_piece([position, piece])
   end
 end

@@ -9,7 +9,7 @@ describe 'tic tac toe' do
     end
 
     def pieces
-      @placed_pieces.map(&:dup) 
+      @placed_pieces.map(&:dup)
     end
 
     def save_piece(piece)

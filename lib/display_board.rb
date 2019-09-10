@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DisplayBoard
   def initialize(piece_gateway)
     @piece_gateway = piece_gateway

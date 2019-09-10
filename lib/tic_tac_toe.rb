@@ -13,16 +13,8 @@ class TicTacToe
       %i[_ _ _]
     ]
 
-    if @placed_xs.include?(1)
-      board[0][0] = :x
-    end
-
-    if @placed_xs.include?(3)
-      board[0][2] = :x
-    end
-
-    if @placed_xs.include?(7)
-      board[2][0] = :x
+    @placed_xs.each do |position|
+      board[(position-1) / 3][(position-1) % 3] = :x
     end
 
     if @placed_os.include?(2)

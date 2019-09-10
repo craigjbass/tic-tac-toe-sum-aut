@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'piece'
+require 'display_board'
 
 class TicTacToe
   def initialize(piece_gateway)
@@ -8,17 +9,7 @@ class TicTacToe
   end
 
   def display_board
-    board = [
-      %i[_ _ _],
-      %i[_ _ _],
-      %i[_ _ _]
-    ]
-
-    @piece_gateway.pieces.each do |piece|
-      board[piece.row][piece.column] = piece.type
-    end
-
-    { board: board }
+    DisplayBoard.new(@piece_gateway).execute({})
   end
 
   def place_piece(type, position)

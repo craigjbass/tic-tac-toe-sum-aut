@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GameState
+class InMemoryPieceGateway
   def initialize
     @placed_pieces = []
   end

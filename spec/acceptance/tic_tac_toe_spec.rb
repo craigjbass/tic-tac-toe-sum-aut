@@ -3,7 +3,7 @@
 require 'tic_tac_toe'
 
 describe 'tic tac toe' do
-  let(:game_state) { GameState.new }
+  let(:game_state) { InMemoryPieceGateway.new }
 
   it 'can display an empty board' do
     tic_tac_toe = TicTacToe.new(game_state)

@@ -5,7 +5,7 @@ require 'display_board'
 require 'place_piece'
 
 class TicTacToe
-  def initialize(piece_gateway, display_board = nil, place_piece = nil)
+  def initialize(piece_gateway, display_board, place_piece)
     @piece_gateway = piece_gateway
     @display_board = display_board || DisplayBoard.new(piece_gateway)
     @place_piece = place_piece || PlacePiece.new(piece_gateway)

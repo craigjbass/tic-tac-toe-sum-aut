@@ -10,8 +10,12 @@ class GameState
   end
 
   def save_piece(piece)
-    @placed_pieces << piece
+    @placed_pieces << [piece.position, piece.type]
   end
+end
+
+class Piece
+  attr_accessor :position, :type
 end
 
 class TicTacToe
@@ -34,6 +38,11 @@ class TicTacToe
   end
 
   def place_piece(piece, position)
-    @game_state.save_piece([position, piece])
+    @game_state.save_piece(
+      Piece.new.tap do |p|
+        p.position = position
+        p.type = piece
+      end
+    )
   end
 end

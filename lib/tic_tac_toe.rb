@@ -17,12 +17,8 @@ class TicTacToe
       board[(position-1) / 3][(position-1) % 3] = :x
     end
 
-    if @placed_os.include?(2)
-      board[0][1] = :o
-    end
-
-    if @placed_os.include?(6)
-      board[1][2] = :o
+    @placed_os.each do |position|
+      board[(position-1) / 3][(position-1) % 3] = :o
     end
 
     { board: board }

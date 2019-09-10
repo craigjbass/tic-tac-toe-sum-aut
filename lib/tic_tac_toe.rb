@@ -4,6 +4,10 @@ class TicTacToe
   class GameState
     attr_accessor :placed_pieces
 
+    def initialize
+      @placed_pieces = []
+    end
+
     def pieces
       @placed_pieces
     end
@@ -15,7 +19,6 @@ class TicTacToe
 
   def initialize
     @game_state = GameState.new
-    @game_state.placed_pieces = []
   end
 
   def display_board

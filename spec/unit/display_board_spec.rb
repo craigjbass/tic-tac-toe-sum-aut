@@ -1,12 +1,12 @@
+# frozen_string_literal: true
+
 describe DisplayBoard do
   class StubPieceGateway
     def initialize(pieces)
       @pieces = pieces
     end
 
-    def pieces
-      @pieces
-    end
+    attr_reader :pieces
   end
 
   it 'can display an empty board' do
@@ -17,9 +17,9 @@ describe DisplayBoard do
     expect(response[:board]).to(
       eq(
         [
-          [:_, :_, :_],
-          [:_, :_, :_],
-          [:_, :_, :_]
+          %i[_ _ _],
+          %i[_ _ _],
+          %i[_ _ _]
         ]
       )
     )
@@ -42,9 +42,9 @@ describe DisplayBoard do
     expect(response[:board]).to(
       eq(
         [
-          [:_, :_, :_],
-          [:_, :_, :_],
-          [:_, :_, :x]
+          %i[_ _ _],
+          %i[_ _ _],
+          %i[_ _ x]
         ]
       )
     )
@@ -67,9 +67,9 @@ describe DisplayBoard do
     expect(response[:board]).to(
       eq(
         [
-          [:_, :_, :o],
-          [:_, :_, :_],
-          [:_, :_, :_]
+          %i[_ _ o],
+          %i[_ _ _],
+          %i[_ _ _]
         ]
       )
     )
@@ -96,9 +96,9 @@ describe DisplayBoard do
     expect(response[:board]).to(
       eq(
         [
-          [:_, :_, :o],
-          [:_, :x, :_],
-          [:_, :_, :_]
+          %i[_ _ o],
+          %i[_ x _],
+          %i[_ _ _]
         ]
       )
     )

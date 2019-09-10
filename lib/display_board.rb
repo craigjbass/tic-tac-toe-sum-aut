@@ -7,9 +7,9 @@ class DisplayBoard
 
   def execute(_request)
     board = [
-      [:_, :_, :_],
-      [:_, :_, :_],
-      [:_, :_, :_]
+      %i[_ _ _],
+      %i[_ _ _],
+      %i[_ _ _]
     ]
 
     @piece_gateway.pieces.each do |piece|

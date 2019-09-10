@@ -21,6 +21,10 @@ class TicTacToe
       board[0][2] = :x
     end
 
+    if @placed_xs.include?(7)
+      board[2][0] = :x
+    end
+
     if @placed_os.include?(2)
       board[0][1] = :o
     end

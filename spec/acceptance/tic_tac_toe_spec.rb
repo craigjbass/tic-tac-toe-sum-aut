@@ -88,4 +88,24 @@ describe 'tic tac toe' do
       )
     )
   end
+
+  it 'can place five pieces' do
+    tic_tac_toe = TicTacToe.new
+
+    tic_tac_toe.place_piece(:x, 1)
+    tic_tac_toe.place_piece(:o, 2)
+    tic_tac_toe.place_piece(:x, 3)
+    tic_tac_toe.place_piece(:o, 6)
+    tic_tac_toe.place_piece(:x, 7)
+
+    expect(tic_tac_toe.display_board[:board]).to(
+      eq(
+        [
+          %i[x o x],
+          %i[_ _ o],
+          %i[x _ _]
+        ]
+      )
+    )
+  end
 end

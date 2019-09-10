@@ -33,11 +33,7 @@ class TicTacToe
   end
 
   def place_piece(piece, position)
-    if piece == :o
-      @placed_os << position
-    end
-    if piece == :x
-      @placed_xs << position
-    end
+    @placed_os << position if piece == :o
+    @placed_xs << position if piece == :x
   end
 end

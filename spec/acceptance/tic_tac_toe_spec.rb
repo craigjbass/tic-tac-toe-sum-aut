@@ -3,6 +3,20 @@
 require 'tic_tac_toe'
 
 describe 'tic tac toe' do
+  class InMemoryPieceGateway
+    def initialize
+      @placed_pieces = []
+    end
+
+    def pieces
+      @placed_pieces.map(&:dup) 
+    end
+
+    def save_piece(piece)
+      @placed_pieces << piece
+    end
+  end
+
   let(:game_state) { InMemoryPieceGateway.new }
 
   it 'can display an empty board' do

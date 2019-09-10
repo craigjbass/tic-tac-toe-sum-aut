@@ -16,6 +16,14 @@ end
 
 class Piece
   attr_accessor :position, :type
+
+  def row
+    (position - 1) / 3
+  end
+
+  def column
+    (position - 1) % 3
+  end
 end
 
 class TicTacToe
@@ -31,7 +39,7 @@ class TicTacToe
     ]
 
     @game_state.pieces.each do |piece|
-      board[(piece.position-1) / 3][(piece.position-1) % 3] = piece.type
+      board[piece.row][piece.column] = piece.type
     end
 
     { board: board }

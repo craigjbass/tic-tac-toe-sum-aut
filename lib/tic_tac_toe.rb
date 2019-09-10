@@ -5,7 +5,7 @@ require 'display_board'
 require 'place_piece'
 
 class TicTacToe
-  def initialize(piece_gateway, display_board, place_piece)
+  def initialize(display_board, place_piece)
     @display_board = display_board 
     @place_piece = place_piece 
   end

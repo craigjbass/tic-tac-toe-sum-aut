@@ -21,7 +21,7 @@ describe 'tic tac toe' do
   
 
   it 'can display an empty board' do
-    tic_tac_toe = TicTacToe.new(piece_gateway, DisplayBoard.new(piece_gateway), PlacePiece.new(piece_gateway))
+    tic_tac_toe = TicTacToe.new(DisplayBoard.new(piece_gateway), PlacePiece.new(piece_gateway))
 
     response = tic_tac_toe.display_board
 
@@ -37,7 +37,7 @@ describe 'tic tac toe' do
   end
 
   it 'can place a piece' do
-    tic_tac_toe = TicTacToe.new(piece_gateway, DisplayBoard.new(piece_gateway), PlacePiece.new(piece_gateway))
+    tic_tac_toe = TicTacToe.new(DisplayBoard.new(piece_gateway), PlacePiece.new(piece_gateway))
 
     tic_tac_toe.place_piece(:x, 1)
 
@@ -53,7 +53,7 @@ describe 'tic tac toe' do
   end
 
   it 'can place two pieces' do
-    tic_tac_toe = TicTacToe.new(piece_gateway, DisplayBoard.new(piece_gateway), PlacePiece.new(piece_gateway))
+    tic_tac_toe = TicTacToe.new(DisplayBoard.new(piece_gateway), PlacePiece.new(piece_gateway))
 
     tic_tac_toe.place_piece(:x, 1)
     tic_tac_toe.place_piece(:o, 2)
@@ -70,7 +70,7 @@ describe 'tic tac toe' do
   end
 
   it 'can place three pieces' do
-    tic_tac_toe = TicTacToe.new(piece_gateway, DisplayBoard.new(piece_gateway), PlacePiece.new(piece_gateway))
+    tic_tac_toe = TicTacToe.new(DisplayBoard.new(piece_gateway), PlacePiece.new(piece_gateway))
 
     tic_tac_toe.place_piece(:x, 1)
     tic_tac_toe.place_piece(:o, 2)
@@ -88,7 +88,7 @@ describe 'tic tac toe' do
   end
 
   it 'can place four pieces' do
-    tic_tac_toe = TicTacToe.new(piece_gateway, DisplayBoard.new(piece_gateway), PlacePiece.new(piece_gateway))
+    tic_tac_toe = TicTacToe.new(DisplayBoard.new(piece_gateway), PlacePiece.new(piece_gateway))
 
     tic_tac_toe.place_piece(:x, 1)
     tic_tac_toe.place_piece(:o, 2)
@@ -107,7 +107,7 @@ describe 'tic tac toe' do
   end
 
   it 'can place five pieces' do
-    tic_tac_toe = TicTacToe.new(piece_gateway, DisplayBoard.new(piece_gateway), PlacePiece.new(piece_gateway))
+    tic_tac_toe = TicTacToe.new(DisplayBoard.new(piece_gateway), PlacePiece.new(piece_gateway))
 
     tic_tac_toe.place_piece(:x, 1)
     tic_tac_toe.place_piece(:o, 2)
@@ -127,7 +127,7 @@ describe 'tic tac toe' do
   end
 
   it 'can persist moves' do
-    TicTacToe.new(piece_gateway, DisplayBoard.new(piece_gateway), PlacePiece.new(piece_gateway)).tap do |tic_tac_toe|
+    TicTacToe.new(DisplayBoard.new(piece_gateway), PlacePiece.new(piece_gateway)).tap do |tic_tac_toe|
       tic_tac_toe.place_piece(:x, 1)
       tic_tac_toe.place_piece(:o, 2)
       tic_tac_toe.place_piece(:x, 3)
@@ -135,7 +135,7 @@ describe 'tic tac toe' do
       tic_tac_toe.place_piece(:x, 7)
     end
 
-    TicTacToe.new(piece_gateway, DisplayBoard.new(piece_gateway), PlacePiece.new(piece_gateway)).tap do |tic_tac_toe|
+    TicTacToe.new(DisplayBoard.new(piece_gateway), PlacePiece.new(piece_gateway)).tap do |tic_tac_toe|
       expect(tic_tac_toe.display_board[:board]).to(
         eq(
           [

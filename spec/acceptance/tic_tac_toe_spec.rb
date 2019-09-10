@@ -29,7 +29,7 @@ describe 'tic tac toe' do
   end
 
   def display_board
-    @tic_tac_toe.display_board
+    @display_board.execute({})
   end
 
   def place_piece(type, position)

@@ -109,8 +109,9 @@ describe 'tic tac toe' do
     )
   end
 
-  xit 'can persist moves' do
-    TicTacToe.new.tap do |tic_tac_toe|
+  it 'can persist moves' do
+    game_state = GameState.new
+    TicTacToe.new(game_state).tap do |tic_tac_toe|
       tic_tac_toe.place_piece(:x, 1)
       tic_tac_toe.place_piece(:o, 2)
       tic_tac_toe.place_piece(:x, 3)
@@ -118,7 +119,7 @@ describe 'tic tac toe' do
       tic_tac_toe.place_piece(:x, 7)
     end
 
-    TicTacToe.new.tap do |tic_tac_toe|
+    TicTacToe.new(game_state).tap do |tic_tac_toe|
       expect(tic_tac_toe.display_board[:board]).to(
         eq(
           [

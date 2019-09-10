@@ -6,16 +6,11 @@ class GameState
   end
 
   def pieces
-    @placed_pieces.map do |p|
-      Piece.new.tap do |piece|
-        piece.position = p[0]
-        piece.type = p[1]
-      end
-    end
+    @placed_pieces.map(&:dup) 
   end
 
   def save_piece(piece)
-    @placed_pieces << [piece.position, piece.type]
+    @placed_pieces << piece
   end
 end
 

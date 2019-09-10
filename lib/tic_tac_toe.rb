@@ -2,6 +2,7 @@
 
 require 'piece'
 require 'display_board'
+require 'place_piece'
 
 class TicTacToe
   def initialize(piece_gateway)
@@ -13,11 +14,6 @@ class TicTacToe
   end
 
   def place_piece(type, position)
-    @piece_gateway.save_piece(
-      Piece.new.tap do |p|
-        p.position = position
-        p.type = type
-      end
-    )
+    PlacePiece.new(@piece_gateway).execute(position: position, type: type)
   end
 end

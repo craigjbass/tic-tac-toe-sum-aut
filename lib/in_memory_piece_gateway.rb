@@ -8,6 +8,6 @@ class InMemoryPieceGateway
   end
 
   def pieces
-    @pieces
+    @pieces.map(&:dup)
   end
 end

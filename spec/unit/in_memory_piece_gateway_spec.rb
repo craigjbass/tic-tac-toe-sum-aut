@@ -31,6 +31,7 @@ describe InMemoryPieceGateway do
       p.position = 2
       p.type = :o
     end)
+
     expect(gateway.pieces.length).to eq(3)
     expect(gateway.pieces[0].position).to eq(1)
     expect(gateway.pieces[0].type).to eq(:x)
@@ -40,5 +41,18 @@ describe InMemoryPieceGateway do
 
     expect(gateway.pieces[2].position).to eq(2)
     expect(gateway.pieces[2].type).to eq(:o)
+  end
+
+  it 'ensures immutability of returned instances' do
+    gateway = described_class.new
+
+    gateway.save_piece(Piece.new.tap do |p|
+      p.position = 2
+      p.type = :o
+    end)
+
+    gateway.pieces[0].position = 3
+
+    expect(gateway.pieces[0].position).to eq(2)
   end
 end

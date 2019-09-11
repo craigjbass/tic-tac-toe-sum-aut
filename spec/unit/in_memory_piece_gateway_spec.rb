@@ -1,15 +1,19 @@
 describe InMemoryPieceGateway do
   let(:gateway) { described_class.new }
 
+  def save_piece(position:, type:)
+    gateway.save_piece(Piece.new.tap do |p|
+      p.position = position
+      p.type = type
+    end)
+  end
+
   it 'can fetch no pieces' do
     expect(gateway.pieces).to eq([])
   end
 
   it 'can fetch one piece' do
-    gateway.save_piece(Piece.new.tap do |p|
-      p.position = 1
-      p.type = :x
-    end)
+    save_piece(position: 1, type: :x)
     expect(gateway.pieces.length).to eq(1)
     expect(gateway.pieces[0].position).to eq(1)
     expect(gateway.pieces[0].type).to eq(:x)

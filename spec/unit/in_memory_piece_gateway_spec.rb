@@ -8,13 +8,19 @@ describe InMemoryPieceGateway do
     end)
   end
 
+  def expect_number_of_pieces_to_be(expected)
+    expect(gateway.pieces.length).to eq(expected)
+  end
+
   it 'can fetch no pieces' do
     expect(gateway.pieces).to eq([])
   end
 
   it 'can fetch one piece' do
     save_piece(position: 1, type: :x)
-    expect(gateway.pieces.length).to eq(1)
+
+    expect_number_of_pieces_to_be(1)
+
     expect(gateway.pieces[0].position).to eq(1)
     expect(gateway.pieces[0].type).to eq(:x)
   end
@@ -24,7 +30,8 @@ describe InMemoryPieceGateway do
     save_piece(position: 9, type: :x)
     save_piece(position: 2, type: :o)
 
-    expect(gateway.pieces.length).to eq(3)
+    expect_number_of_pieces_to_be(3)
+
     expect(gateway.pieces[0].position).to eq(1)
     expect(gateway.pieces[0].type).to eq(:x)
 

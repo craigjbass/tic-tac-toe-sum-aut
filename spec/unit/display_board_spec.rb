@@ -25,6 +25,14 @@ describe DisplayBoard do
     )
   end
 
+  it 'can report the game as in progress' do
+    display_board = described_class.new(StubPieceGateway.new([]))
+
+    response = display_board.execute({})
+
+    expect(response[:status]).to eq(:in_progress)
+  end
+
   it 'can display one piece' do
     pieces = [
       Piece.new.tap do |piece|

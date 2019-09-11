@@ -2,21 +2,6 @@ $LOAD_PATH << "#{__dir__}/lib/"
 
 require 'tic_tac_toe'
 
-
-class InMemoryPieceGateway
-  def initialize
-    @placed_pieces = []
-  end
-
-  def pieces
-    @placed_pieces.map(&:dup)
-  end
-
-  def save_piece(piece)
-    @placed_pieces << piece
-  end
-end
-
 gateway = InMemoryPieceGateway.new
 
 place_piece = PlacePiece.new(gateway)

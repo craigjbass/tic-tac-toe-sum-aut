@@ -16,6 +16,6 @@ class DisplayBoard
       board[piece.row][piece.column] = piece.type
     end
 
-    { board: board }
+    { board: board, status: :in_progress }
   end
 end

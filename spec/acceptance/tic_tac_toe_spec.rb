@@ -32,6 +32,7 @@ describe 'tic tac toe' do
         ]
       )
     )
+    expect(response[:status]).to eq(:in_progress)
   end
 
   it 'can place a piece' do

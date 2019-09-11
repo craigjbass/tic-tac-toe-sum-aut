@@ -12,6 +12,11 @@ describe InMemoryPieceGateway do
     expect(gateway.pieces.length).to eq(expected)
   end
 
+  def expect_piece_to_look_like(position:, type:, at_index:)
+    expect(gateway.pieces[at_index].position).to eq(position)
+    expect(gateway.pieces[at_index].type).to eq(type)
+  end
+
   it 'can fetch no pieces' do
     expect(gateway.pieces).to eq([])
   end
@@ -21,8 +26,11 @@ describe InMemoryPieceGateway do
 
     expect_number_of_pieces_to_be(1)
 
-    expect(gateway.pieces[0].position).to eq(1)
-    expect(gateway.pieces[0].type).to eq(:x)
+    expect_piece_to_look_like(
+      position: 1, 
+      type: :x, 
+      at_index: 0
+    )
   end
 
   it 'can fetch three pieces' do
@@ -32,14 +40,21 @@ describe InMemoryPieceGateway do
 
     expect_number_of_pieces_to_be(3)
 
-    expect(gateway.pieces[0].position).to eq(1)
-    expect(gateway.pieces[0].type).to eq(:x)
-
-    expect(gateway.pieces[1].position).to eq(9)
-    expect(gateway.pieces[1].type).to eq(:x)
-
-    expect(gateway.pieces[2].position).to eq(2)
-    expect(gateway.pieces[2].type).to eq(:o)
+    expect_piece_to_look_like(
+      position: 1, 
+      type: :x, 
+      at_index: 0
+    )
+    expect_piece_to_look_like(
+      position: 9, 
+      type: :x, 
+      at_index: 1
+    )
+    expect_piece_to_look_like(
+      position: 2, 
+      type: :o, 
+      at_index: 2
+    )
   end
 
   it 'ensures immutability of returned instances' do

@@ -1,11 +1,11 @@
 describe InMemoryPieceGateway do
+  let(:gateway) { described_class.new }
+
   it 'can fetch no pieces' do
-    gateway = described_class.new
     expect(gateway.pieces).to eq([])
   end
 
   it 'can fetch one piece' do
-    gateway = described_class.new
     gateway.save_piece(Piece.new.tap do |p|
       p.position = 1
       p.type = :x
@@ -16,7 +16,6 @@ describe InMemoryPieceGateway do
   end
 
   it 'can fetch three pieces' do
-    gateway = described_class.new
     gateway.save_piece(Piece.new.tap do |p|
       p.position = 1
       p.type = :x
@@ -44,8 +43,6 @@ describe InMemoryPieceGateway do
   end
 
   it 'ensures immutability of returned instances' do
-    gateway = described_class.new
-
     gateway.save_piece(Piece.new.tap do |p|
       p.position = 2
       p.type = :o

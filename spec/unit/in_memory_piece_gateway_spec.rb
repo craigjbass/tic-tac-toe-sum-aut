@@ -20,20 +20,9 @@ describe InMemoryPieceGateway do
   end
 
   it 'can fetch three pieces' do
-    gateway.save_piece(Piece.new.tap do |p|
-      p.position = 1
-      p.type = :x
-    end)
-
-    gateway.save_piece(Piece.new.tap do |p|
-      p.position = 9
-      p.type = :x
-    end)
-
-    gateway.save_piece(Piece.new.tap do |p|
-      p.position = 2
-      p.type = :o
-    end)
+    save_piece(position: 1, type: :x)
+    save_piece(position: 9, type: :x)
+    save_piece(position: 2, type: :o)
 
     expect(gateway.pieces.length).to eq(3)
     expect(gateway.pieces[0].position).to eq(1)
@@ -47,10 +36,7 @@ describe InMemoryPieceGateway do
   end
 
   it 'ensures immutability of returned instances' do
-    gateway.save_piece(Piece.new.tap do |p|
-      p.position = 2
-      p.type = :o
-    end)
+    save_piece(position: 2, type: :o)
 
     gateway.pieces[0].position = 3
 

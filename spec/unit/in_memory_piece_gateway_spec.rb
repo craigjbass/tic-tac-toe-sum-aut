@@ -62,6 +62,10 @@ describe InMemoryPieceGateway do
 
     gateway.pieces[0].position = 3
 
-    expect(gateway.pieces[0].position).to eq(2)
+    expect_piece_to_look_like(
+      position: 2,
+      type: :o,
+      at_index: 0
+    )
   end
 end

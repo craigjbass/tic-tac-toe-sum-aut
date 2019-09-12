@@ -66,14 +66,11 @@ describe DisplayBoard do
       :_, :_, :x
     )
 
-    expect(response[:board]).to(
-      eq(
-        [
-          %i[_ _ _],
-          %i[_ _ _],
-          %i[_ _ x]
-        ]
-      )
+    expect_board_in_response_to_eq(
+      %i[_ _ _],
+      %i[_ _ _],
+      %i[_ _ x],
+      response
     )
   end
 
@@ -84,14 +81,11 @@ describe DisplayBoard do
       :_, :_, :_
     )
 
-    expect(response[:board]).to(
-      eq(
-        [
-          %i[_ _ o],
-          %i[_ _ _],
-          %i[_ _ _]
-        ]
-      )
+    expect_board_in_response_to_eq(
+      %i[_ _ o],
+      %i[_ _ _],
+      %i[_ _ _],
+      response
     )
   end
 
@@ -102,14 +96,11 @@ describe DisplayBoard do
       :_, :_, :_
     )
 
-    expect(response[:board]).to(
-      eq(
-        [
-          %i[_ _ o],
-          %i[_ x _],
-          %i[_ _ _]
-        ]
-      )
+    expect_board_in_response_to_eq(
+      %i[_ _ o],
+      %i[_ x _],
+      %i[_ _ _],
+      response
     )
   end
 
@@ -120,14 +111,11 @@ describe DisplayBoard do
       :_, :_, :_
     )
 
-    expect(response[:board]).to(
-      eq(
-        [
-          %i[_ _ _],
-          %i[x x x],
-          %i[_ _ _]
-        ]
-      )
+    expect_board_in_response_to_eq(
+      %i[_ _ _],
+      %i[x x x],
+      %i[_ _ _],
+      response
     )
     expect(response[:status]).to eq(:x_wins)
   end

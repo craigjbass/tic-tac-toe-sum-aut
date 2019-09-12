@@ -24,15 +24,19 @@ describe DisplayBoard do
     pieces
   end
 
+  def display_board_with(pieces:)
+    display_board = described_class.new(StubPieceGateway.new(pieces))
+    display_board.execute({})
+  end
+
   it 'can display an empty board' do
     pieces = create_pieces(
       :_, :_, :_,
       :_, :_, :_,
       :_, :_, :_
     )
-    display_board = described_class.new(StubPieceGateway.new(pieces))
 
-    response = display_board.execute({})
+    response = display_board_with(pieces: pieces)
 
     expect(response[:board]).to(
       eq(

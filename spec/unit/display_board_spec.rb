@@ -16,7 +16,7 @@ describe DisplayBoard do
     end
   end
 
-  def create_pieces(*flat_grid)
+  def grid_pieces(*flat_grid)
     pieces = []
     flat_grid.each_with_index do |t, p|
       pieces << create_piece(p+1, t)
@@ -24,19 +24,17 @@ describe DisplayBoard do
     pieces
   end
 
-  def display_board_with(pieces:)
+  def display_board_for(pieces)
     display_board = described_class.new(StubPieceGateway.new(pieces))
     display_board.execute({})
   end
 
   it 'can display an empty board' do
-    pieces = create_pieces(
+    response = display_board_for grid_pieces(
       :_, :_, :_,
       :_, :_, :_,
       :_, :_, :_
     )
-
-    response = display_board_with(pieces: pieces)
 
     expect(response[:board]).to(
       eq(
@@ -50,30 +48,21 @@ describe DisplayBoard do
   end
 
   it 'can report the game as in progress' do
-    pieces = create_pieces(
+    response = display_board_for grid_pieces(
       :_, :_, :_,
       :_, :_, :_,
       :_, :_, :_
     )
-    display_board = described_class.new(StubPieceGateway.new(pieces))
-
-    response = display_board.execute({})
 
     expect(response[:status]).to eq(:in_progress)
   end
 
   it 'can display one piece' do
-    pieces = create_pieces(
+    response = display_board_for grid_pieces(
       :_, :_, :_,
       :_, :_, :_,
       :_, :_, :x
     )
-
-    stub = StubPieceGateway.new(pieces)
-
-    display_board = described_class.new(stub)
-
-    response = display_board.execute({})
 
     expect(response[:board]).to(
       eq(
@@ -87,17 +76,11 @@ describe DisplayBoard do
   end
 
   it 'can display another single piece' do
-    pieces = create_pieces(
+    response = display_board_for grid_pieces(
       :_, :_, :o,
       :_, :_, :_,
       :_, :_, :_
     )
-
-    stub = StubPieceGateway.new(pieces)
-
-    display_board = described_class.new(stub)
-
-    response = display_board.execute({})
 
     expect(response[:board]).to(
       eq(
@@ -111,17 +94,11 @@ describe DisplayBoard do
   end
 
   it 'can display multiple pieces' do
-    pieces = create_pieces(
+    response = display_board_for grid_pieces(
       :_, :_, :o,
       :_, :x, :_,
       :_, :_, :_
     )
-
-    stub = StubPieceGateway.new(pieces)
-
-    display_board = described_class.new(stub)
-
-    response = display_board.execute({})
 
     expect(response[:board]).to(
       eq(
@@ -135,17 +112,11 @@ describe DisplayBoard do
   end
 
   it 'can detect a win for x' do
-    pieces = create_pieces(
+    response = display_board_for grid_pieces(
       :_, :_, :_,
       :x, :x, :x,
       :_, :_, :_
     )
-
-    stub = StubPieceGateway.new(pieces)
-
-    display_board = described_class.new(stub)
-
-    response = display_board.execute({})
 
     expect(response[:board]).to(
       eq(

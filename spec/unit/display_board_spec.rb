@@ -16,10 +16,10 @@ describe DisplayBoard do
     end
   end
 
-  def create_pieces(*grid)
+  def create_pieces(*flat_grid)
     pieces = []
-    grid.each_with_index do |p, i|
-      pieces << create_piece(i+1, p)
+    flat_grid.each_with_index do |t, p|
+      pieces << create_piece(p+1, t)
     end
     pieces
   end

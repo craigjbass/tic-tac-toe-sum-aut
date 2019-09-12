@@ -16,6 +16,14 @@ describe DisplayBoard do
     end
   end
 
+  def create_pieces(*grid)
+    pieces = []
+    grid.each_with_index do |p, i|
+      pieces << create_piece(i+1, p)
+    end
+    pieces
+  end
+
   it 'can display an empty board' do
     display_board = described_class.new(StubPieceGateway.new([]))
 
@@ -108,11 +116,11 @@ describe DisplayBoard do
   end
 
   it 'can detect a win for x' do
-    pieces = [
-      create_piece(4, :x),
-      create_piece(5, :x),
-      create_piece(6, :x)
-    ]
+    pieces = create_pieces(
+      :_, :_, :_,
+      :x, :x, :x,
+      :_, :_, :_
+    )
 
     stub = StubPieceGateway.new(pieces)
 

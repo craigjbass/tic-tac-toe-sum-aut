@@ -64,10 +64,7 @@ describe DisplayBoard do
 
   it 'can display another single piece' do
     pieces = [
-      Piece.new.tap do |piece|
-        piece.position = 3
-        piece.type = :o
-      end
+      create_piece(3, :o)
     ]
 
     stub = StubPieceGateway.new(pieces)
@@ -89,14 +86,8 @@ describe DisplayBoard do
 
   it 'can display multiple pieces' do
     pieces = [
-      Piece.new.tap do |piece|
-        piece.position = 3
-        piece.type = :o
-      end,
-      Piece.new.tap do |piece|
-        piece.position = 5
-        piece.type = :x
-      end
+      create_piece(3, :o),
+      create_piece(5, :x)
     ]
 
     stub = StubPieceGateway.new(pieces)
@@ -118,18 +109,9 @@ describe DisplayBoard do
 
   it 'can detect a win for x' do
     pieces = [
-      Piece.new.tap do |piece|
-        piece.position = 4
-        piece.type = :x
-      end,
-      Piece.new.tap do |piece|
-        piece.position = 5
-        piece.type = :x
-      end,
-      Piece.new.tap do |piece|
-        piece.position = 6
-        piece.type = :x
-      end
+      create_piece(4, :x),
+      create_piece(5, :x),
+      create_piece(6, :x)
     ]
 
     stub = StubPieceGateway.new(pieces)

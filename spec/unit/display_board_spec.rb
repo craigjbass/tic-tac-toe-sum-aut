@@ -25,7 +25,12 @@ describe DisplayBoard do
   end
 
   it 'can display an empty board' do
-    display_board = described_class.new(StubPieceGateway.new([]))
+    pieces = create_pieces(
+      :_, :_, :_,
+      :_, :_, :_,
+      :_, :_, :_
+    )
+    display_board = described_class.new(StubPieceGateway.new(pieces))
 
     response = display_board.execute({})
 
@@ -41,7 +46,12 @@ describe DisplayBoard do
   end
 
   it 'can report the game as in progress' do
-    display_board = described_class.new(StubPieceGateway.new([]))
+    pieces = create_pieces(
+      :_, :_, :_,
+      :_, :_, :_,
+      :_, :_, :_
+    )
+    display_board = described_class.new(StubPieceGateway.new(pieces))
 
     response = display_board.execute({})
 
@@ -49,9 +59,11 @@ describe DisplayBoard do
   end
 
   it 'can display one piece' do
-    pieces = [
-      create_piece(9, :x)
-    ]
+    pieces = create_pieces(
+      :_, :_, :_,
+      :_, :_, :_,
+      :_, :_, :x
+    )
 
     stub = StubPieceGateway.new(pieces)
 
@@ -71,9 +83,11 @@ describe DisplayBoard do
   end
 
   it 'can display another single piece' do
-    pieces = [
-      create_piece(3, :o)
-    ]
+    pieces = create_pieces(
+      :_, :_, :o,
+      :_, :_, :_,
+      :_, :_, :_
+    )
 
     stub = StubPieceGateway.new(pieces)
 
@@ -93,10 +107,11 @@ describe DisplayBoard do
   end
 
   it 'can display multiple pieces' do
-    pieces = [
-      create_piece(3, :o),
-      create_piece(5, :x)
-    ]
+    pieces = create_pieces(
+      :_, :_, :o,
+      :_, :x, :_,
+      :_, :_, :_
+    )
 
     stub = StubPieceGateway.new(pieces)
 

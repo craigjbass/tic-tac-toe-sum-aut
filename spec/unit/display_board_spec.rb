@@ -49,16 +49,6 @@ describe DisplayBoard do
     )
   end
 
-  it 'can report the game as in progress' do
-    response = display_board_for grid_pieces(
-      :_, :_, :_,
-      :_, :_, :_,
-      :_, :_, :_
-    )
-
-    expect(response[:status]).to eq(:in_progress)
-  end
-
   it 'can display one piece' do
     response = display_board_for grid_pieces(
       :_, :_, :_,
@@ -104,19 +94,59 @@ describe DisplayBoard do
     )
   end
 
-  it 'can detect a win for x' do
-    response = display_board_for grid_pieces(
+  [
+    [
+      :_, :_, :_,
+      :_, :_, :_,
+      :_, :_, :_
+    ],
+    [
+      :_, :x, :o,
+      :x, :_, :_,
+      :o, :_, :x
+    ],
+  ].each do |example_grid|
+    it 'can report the game as in progress' do
+      response = display_board_for grid_pieces(*example_grid)
+      expect(response[:status]).to eq(:in_progress)
+    end
+  end
+
+  [
+    [
       :_, :_, :_,
       :x, :x, :x,
       :_, :_, :_
-    )
-
-    expect_board_in_response_to_eq(
-      %i[_ _ _],
-      %i[x x x],
-      %i[_ _ _],
-      response
-    )
-    expect(response[:status]).to eq(:x_wins)
+    ],
+    [
+      :x, :x, :x,
+      :_, :_, :_,
+      :_, :_, :_
+    ],
+    [
+      :_, :_, :_,
+      :_, :_, :_,
+      :x, :x, :x
+    ],
+    [
+      :x, :_, :_,
+      :x, :_, :_,
+      :x, :_, :_
+    ],
+    [
+      :_, :x, :_,
+      :_, :x, :_,
+      :_, :x, :_
+    ],
+    [
+      :_, :_, :x,
+      :_, :_, :x,
+      :_, :_, :x
+    ]
+  ].each do |grid_example|
+    it 'can detect a win for x' do
+      response = display_board_for grid_pieces(*grid_example)
+      expect(response[:status]).to eq(:x_wins)
+    end
   end
 end

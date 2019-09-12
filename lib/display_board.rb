@@ -18,10 +18,39 @@ class DisplayBoard
 
     status = :in_progress
 
-    if board[1][0] == :x
+
+    horizontal_row = [board[0][0], board[0][1], board[0][2]]
+
+    if all_x?(horizontal_row)
+      status = :x_wins
+    end
+
+    if board[1][0] == :x && board[1][1] == :x && board[1][2] == :x
+      status = :x_wins
+    end
+
+    if board[2][0] == :x && board[2][1] == :x && board[2][2] == :x
+      status = :x_wins
+    end
+
+    if board[0][0] == :x && board[1][0] == :x && board[2][0] == :x
+      status = :x_wins
+    end
+
+    if board[0][1] == :x && board[1][1] == :x && board[2][1] == :x
+      status = :x_wins
+    end
+
+    if board[0][2] == :x && board[1][2] == :x && board[2][2] == :x
       status = :x_wins
     end
 
     { board: board, status: status }
+  end
+
+  private
+
+  def all_x?(line)
+    line == [:x]*3
   end
 end

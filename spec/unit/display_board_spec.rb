@@ -29,6 +29,11 @@ describe DisplayBoard do
     display_board.execute({})
   end
 
+  def expect_board_in_response_to_eq(*expected, response)
+    expect(response[:board]).to eq(expected)
+  end
+
+
   it 'can display an empty board' do
     response = display_board_for grid_pieces(
       :_, :_, :_,
@@ -36,14 +41,11 @@ describe DisplayBoard do
       :_, :_, :_
     )
 
-    expect(response[:board]).to(
-      eq(
-        [
-          %i[_ _ _],
-          %i[_ _ _],
-          %i[_ _ _]
-        ]
-      )
+    expect_board_in_response_to_eq(
+      %i[_ _ _],
+      %i[_ _ _],
+      %i[_ _ _],
+      response
     )
   end
 

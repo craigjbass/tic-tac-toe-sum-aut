@@ -18,28 +18,11 @@ class DisplayBoard
 
     status = :in_progress
 
-    if all_x?(horizontal_row_at(0, board))
-      status = :x_wins
-    end
-
-    if all_x?(horizontal_row_at(1, board))
-      status = :x_wins
-    end
-
-    if all_x?(horizontal_row_at(2, board))
-      status = :x_wins
-    end
-
-    if all_x?(vertical_column_at(0, board))
-      status = :x_wins
-    end
-
-    if all_x?(vertical_column_at(1, board))
-      status = :x_wins
-    end
-
-    if all_x?(vertical_column_at(2, board))
-      status = :x_wins
+    (0..2).each do |i|
+      if all_x?(horizontal_row_at(i, board)) ||
+         all_x?(vertical_column_at(i, board))
+        status = :x_wins
+      end
     end
 
     { board: board, status: status }

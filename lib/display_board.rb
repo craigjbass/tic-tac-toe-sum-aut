@@ -22,11 +22,11 @@ class DisplayBoard
       status = :x_wins
     end
 
-    if board[1][0] == :x && board[1][1] == :x && board[1][2] == :x
+    if all_x?(horizontal_row_at(1, board))
       status = :x_wins
     end
 
-    if board[2][0] == :x && board[2][1] == :x && board[2][2] == :x
+    if all_x?(horizontal_row_at(2, board))
       status = :x_wins
     end
 

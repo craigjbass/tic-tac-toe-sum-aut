@@ -50,12 +50,10 @@ class DisplayBoard
   def all_x?(line)
     line == [:x]*3
   end
- 
+
   def horizontal_row_at(row, board)
-    horizontal_row = []
-    (0..2).each do |column|
-      horizontal_row << board[row][column]
+    (0..2).reduce([]) do |acc, column|
+      acc + [board[row][column]]
     end
-    horizontal_row
   end
 end

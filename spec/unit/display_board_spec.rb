@@ -9,6 +9,13 @@ describe DisplayBoard do
     attr_reader :pieces
   end
 
+  def create_piece(position, type)
+    Piece.new.tap do |piece|
+      piece.position = position
+      piece.type = type
+    end
+  end
+
   it 'can display an empty board' do
     display_board = described_class.new(StubPieceGateway.new([]))
 
@@ -35,10 +42,7 @@ describe DisplayBoard do
 
   it 'can display one piece' do
     pieces = [
-      Piece.new.tap do |piece|
-        piece.position = 9
-        piece.type = :x
-      end
+      create_piece(9, :x)
     ]
 
     stub = StubPieceGateway.new(pieces)
@@ -110,5 +114,39 @@ describe DisplayBoard do
         ]
       )
     )
+  end
+
+  it 'can detect a win for x' do
+    pieces = [
+      Piece.new.tap do |piece|
+        piece.position = 4
+        piece.type = :x
+      end,
+      Piece.new.tap do |piece|
+        piece.position = 5
+        piece.type = :x
+      end,
+      Piece.new.tap do |piece|
+        piece.position = 6
+        piece.type = :x
+      end
+    ]
+
+    stub = StubPieceGateway.new(pieces)
+
+    display_board = described_class.new(stub)
+
+    response = display_board.execute({})
+
+    expect(response[:board]).to(
+      eq(
+        [
+          %i[_ _ _],
+          %i[x x x],
+          %i[_ _ _]
+        ]
+      )
+    )
+    expect(response[:status]).to eq(:x_wins)
   end
 end

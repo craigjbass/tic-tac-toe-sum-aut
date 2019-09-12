@@ -16,6 +16,12 @@ class DisplayBoard
       board[piece.row][piece.column] = piece.type
     end
 
-    { board: board, status: :in_progress }
+    status = :in_progress
+
+    if board[1][0] == :x
+      status = :x_wins
+    end
+
+    { board: board, status: status }
   end
 end

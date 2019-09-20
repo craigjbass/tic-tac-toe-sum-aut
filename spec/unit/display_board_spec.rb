@@ -149,4 +149,42 @@ describe DisplayBoard do
       expect(response[:status]).to eq(:x_wins)
     end
   end
+
+  [
+    [
+      :_, :_, :_,
+      :o, :o, :o,
+      :_, :_, :_
+    ],
+    [
+      :o, :o, :o,
+      :_, :_, :_,
+      :_, :_, :_
+    ],
+    [
+      :_, :_, :_,
+      :_, :_, :_,
+      :o, :o, :o
+    ],
+    [
+      :o, :_, :_,
+      :o, :_, :_,
+      :o, :_, :_
+    ],
+    [
+      :_, :o, :_,
+      :_, :o, :_,
+      :_, :o, :_
+    ],
+    [
+      :_, :_, :o,
+      :_, :_, :o,
+      :_, :_, :o
+    ]
+  ].each do |grid_example|
+    it 'can detect a win for x' do
+      response = display_board_for grid_pieces(*grid_example)
+      expect(response[:status]).to eq(:o_wins)
+    end
+  end
 end

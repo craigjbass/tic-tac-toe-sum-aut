@@ -167,7 +167,7 @@ describe 'tic tac toe' do
     expect(display_board[:status]).to eq(:x_wins)
   end
 
-  xit 'can detect a win for o' do
+  it 'can detect a win for o' do
     @tic_tac_toe = new_tic_tac_toe
     place_piece(:x, 2)
     place_piece(:o, 7)

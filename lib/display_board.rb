@@ -19,9 +19,17 @@ class DisplayBoard
     status = :in_progress
 
     (0..2).each do |i|
-      if all_x?(horizontal_row_at(i, board)) ||
-         all_x?(vertical_column_at(i, board))
+      horizontal_row = horizontal_row_at(i, board)
+      vertical_row = vertical_column_at(i, board)
+
+      if all?(:x, horizontal_row) ||
+         all?(:x, vertical_row)
         status = :x_wins
+      end
+
+      if all?(:o, horizontal_row) ||
+         all?(:o, vertical_row)
+        status = :o_wins
       end
     end
 
@@ -30,8 +38,8 @@ class DisplayBoard
 
   private
 
-  def all_x?(line)
-    line == [:x]*3
+  def all?(type, line)
+    line == [type]*3
   end
 
   def horizontal_row_at(row, board)
